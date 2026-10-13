@@ -1,13 +1,12 @@
 ---
-const { class: className, id } = Astro.props
+const { class: className = "", id, animate = true } = Astro.props
 ---
-<div data-aos="fade-up">
-  <section
-    id={id}
-    data-section={id}
-    class={`section ${className} scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl`}
-  >
-    <slot />
-  </section>
-</div>
 
+<section
+  id={id}
+  data-section={id}
+  data-aos={animate ? "fade-up" : undefined}
+  class={`section ${className} scroll-m-24 w-full mx-auto container lg:max-w-4xl md:max-w-2xl`}
+>
+  <slot />
+</section>

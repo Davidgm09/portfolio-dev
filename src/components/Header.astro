@@ -29,12 +29,12 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-2 text-[13px] sm:px-3 sm:text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block whitespace-nowrap px-1 py-2 transition sm:px-2 hover:text-sky-700 dark:hover:text-sky-400"
           aria-label={link.label}
           href={link.url}
         >
@@ -42,50 +42,39 @@ const navItems = [
         </a>
       ))
     }
+    <a
+      href="/cv.pdf"
+      download
+      class="mx-1 rounded-full bg-gray-900 px-3 py-1 text-white transition hover:bg-gray-700 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+    >
+      CV
+    </a>
     <ThemeToggle />
   </nav>
 </header>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+  // Marca en el menú la sección que cruza la franja central de la pantalla
+  const links = document.querySelectorAll<HTMLAnchorElement>("header nav a[aria-label]")
+  const ACTIVE = ["text-sky-700", "dark:text-sky-400"]
 
-    const callback = (entries: any[]) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500")
-            } else {
-              item.classList.remove("text-blue-500")
-            }
-          })
-        }
-      })
-    }
-
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    })
-
-    sections.forEach((section) => {
-      observer.observe(section)
-    })
-
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect()
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section)
+        if (!entry.isIntersecting) return
+        links.forEach((link) => {
+          const active = link.getAttribute("aria-label") === entry.target.id
+          link.classList.toggle(ACTIVE[0], active)
+          link.classList.toggle(ACTIVE[1], active)
+          if (active) link.setAttribute("aria-current", "true")
+          else link.removeAttribute("aria-current")
         })
-      }
-    }
-  })
+      })
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  )
+
+  document.querySelectorAll("main section[id]").forEach((section) => observer.observe(section))
 </script>
 
 <style>
@@ -100,8 +89,9 @@ const navItems = [
   }
 
   @keyframes nav-shadown {
-    0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
+    /* parte transparente y termina en el fondo propio de la barra */
+    from {
+      background-color: transparent;
     }
     to {
       @apply shadow-lg ring-1 backdrop-blur ring-white/10;

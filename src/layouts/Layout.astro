@@ -3,9 +3,8 @@ import "@fontsource-variable/onest"
 
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
-import { ViewTransitions } from "astro:transitions"
-import "../styles/animations.css";
-
+import "../styles/global.css"
+import "aos/dist/aos.css"
 
 interface Props {
   title: string
@@ -13,19 +12,48 @@ interface Props {
 }
 
 const { description, title } = Astro.props
+
+// Las URL absolutas (canonical y vista previa en redes) necesitan `site` en astro.config.mjs
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined
+const ogImage = Astro.site ? new URL("/og.png", Astro.site).href : undefined
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="David García" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- Vista previa al compartir el enlace (LinkedIn, WhatsApp, X...) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Aplica el tema antes de pintar la página para evitar el parpadeo -->
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("theme") ?? "system"
+        const dark =
+          theme === "dark" ||
+          (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        document.documentElement.classList.toggle("dark", dark)
+      } catch {}
+    </script>
   </head>
-  <body class="relative text-black dark:text-white">
+  <body class="relative overflow-x-hidden text-black dark:text-white">
     <div
       class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
       bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
@@ -37,7 +65,11 @@ const { description, title } = Astro.props
     <Footer />
     <style is:global>
       :root {
-        color-scheme: light dark;
+        color-scheme: light;
+      }
+
+      :root.dark {
+        color-scheme: dark;
       }
 
       html {
@@ -59,59 +91,21 @@ const { description, title } = Astro.props
         }
       }
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: rgba(255, 255, 255, 0.9);
-        }
+      html.dark body {
+        color: rgba(255, 255, 255, 0.9);
       }
-
-      #header-nav {
-        animation: blur linear both 0.5s;
-        animation-timeline: scroll();
-        animation-range: 0 500px;
-      }
-
-      @keyframes blur {
-        to {
-          backdrop-filter: blur(20px);
-          border-width: 1px;
-          border-color: rgba(0, 0, 0);
-          padding: 0.25rem 0.75rem;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          background-color: rgb(229, 229, 229);
-          border-radius: 9999px;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        @keyframes blur {
-          from {
-            border: 0px;
-          }
-          to {
-            box-shadow:
-              0px 5px 50px -5px rgba(0, 0, 0, 0.1),
-              0px 0px 0 1px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border-width: 1px;
-            border-color: rgba(0, 0, 0);
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 9999px;
-          }
-        }
-      }
-
     </style>
-    <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script>
+      import AOS from "aos"
+
+      // Animaciones de aparición al hacer scroll (desactivadas si se prefiere menos movimiento)
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
+        disable: () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      })
+    </script>
   </body>
 </html>

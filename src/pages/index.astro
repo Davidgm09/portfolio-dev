@@ -11,73 +11,54 @@ import SectionContainer from "../components/SectionContainer.astro"
 import Hero from "../components/Hero.astro"
 import TitleSection from "../components/TitleSection.astro"
 import SkillsIcon from "../components/icons/SkillsIcon.astro"
-import 'aos/dist/aos.css';
+import Contact from "../components/Contact.astro"
 ---
-<script>
-  import AOS from 'aos';
-
-  if (typeof window !== "undefined") {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true,
-      offset: 100,
-    });
-  }
-</script>
 
 <Layout
-  title="Porfolio de David - Desarrollador y Programador Web"
-  description="Contrátame  para crear tu aplicación web o móvil. Desarrollador Web Full Stack"
+  title="David García | Desarrollador Full Stack en Barcelona"
+  description="Porfolio de David García, desarrollador Full Stack en Barcelona. Experiencia, proyectos y CV."
 >
-
-  
   <main class="px-4">
-
-    <SectionContainer class="py-10 md:py-28">
-      <Hero>
-      </slot>
-    </Hero>
+    <SectionContainer id="inicio" class="pt-24 pb-16 md:pt-36 md:pb-28" animate={false}>
+      <Hero />
     </SectionContainer>
 
-    <div class="space-y-24">
-
+    <div class="space-y-28">
       <SectionContainer id="experiencia">
         <TitleSection>
-          <Briefcase class="size-8 text-blue-700"/>
+          <Briefcase class="size-7" />
           Experiencia laboral
         </TitleSection>
         <Experience />
       </SectionContainer>
-    
-    
 
-    <SectionContainer id="proyectos" data-aos="fade-up" data-aos-delay="100">
-      <TitleSection data-aos="fade-up" data-aos-delay="200">
-        <CodeIcon class="size-7 text-blue-700"/>
-        Proyectos
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
+      <SectionContainer id="proyectos">
+        <TitleSection>
+          <CodeIcon class="size-7" />
+          Proyectos
+        </TitleSection>
+        <Projects />
+      </SectionContainer>
 
-    <SectionContainer id="skills" data-aos="fade-up" data-aos-delay="100">
-      <TitleSection data-aos="fade-up" data-aos-delay="200">
-        <SkillsIcon class="size-8 text-blue-700"/>
-        Skills
-      </TitleSection>
-      <Skills />
-    </SectionContainer>
+      <SectionContainer id="skills">
+        <TitleSection>
+          <SkillsIcon class="size-7" />
+          Skills
+        </TitleSection>
+        <Skills />
+      </SectionContainer>
 
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8 text-blue-700"/>
-        Sobre mí
-      </TitleSection>
-      <AboutMe />
-    </SectionContainer>
+      <SectionContainer id="sobre-mi">
+        <TitleSection>
+          <ProfileCheck class="size-7" />
+          Sobre mí
+        </TitleSection>
+        <AboutMe />
+      </SectionContainer>
 
+      <SectionContainer id="contacto">
+        <Contact />
+      </SectionContainer>
     </div>
   </main>
-  
-  
 </Layout>

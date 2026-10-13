@@ -1,64 +1,97 @@
 ---
-const personalImageAlt = "David García"
-import Badge from "../components/Badge.astro"
-import LinkedInIcon from "../components/icons/LinkedIn.astro"
-import MailIcon from "../components/icons/Mail.astro"
-import DescargaIcon from "../components/icons/Descarga.astro"
-import SocialPill from "../components/SocialPill.astro"
+import Badge from "./Badge.astro"
+import LinkedInIcon from "./icons/LinkedIn.astro"
+import MailIcon from "./icons/Mail.astro"
+import DescargaIcon from "./icons/Descarga.astro"
+import GitHubIcon from "./icons/GitHub.astro"
+import SocialPill from "./SocialPill.astro"
 ---
 
-<div class="max-w flex flex-col md:flex-row">
-  <div class="gap-4 mb-4 w-full md:w-1/2">
+<div class="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-14">
+  <div class="hero-in flex shrink-0 flex-col items-center" style="--d: 0ms">
     <img
-      class="w-full max-w-[200px] mx-auto md:max-w-none md:w-full flex items-center"
+      class="w-48 md:w-72"
       src="/blob.svg"
-      alt={personalImageAlt}
+      alt="Foto de David García"
+      width="288"
+      height="319"
     />
     <a
-      href="https://www.fiverr.com/davidgm99"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center justify-center transition md:hover:scale-105 mt-[-16px]"
+      href="mailto:davidgm9999@gmail.com"
+      class="mt-4 rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 md:hover:scale-105"
     >
       <Badge>Disponible para trabajar</Badge>
     </a>
   </div>
-  <div class="w-full md:w-1/2 pt-8 md:pt-16 text-center md:text-left">
-    <h1 class="text-xl md:text-4xl font-bold tracking-tight text-gray-800 dark:text-white text-center">
-      Buenas, soy David
+
+  <div class="text-center md:text-left">
+    <h1
+      class="hero-in text-5xl font-extrabold tracking-tight text-gray-900 md:text-7xl dark:text-white"
+      style="--d: 120ms"
+    >
+      David García
     </h1>
     <p
-      class="mt-8 md:mt-8 text-base md:text-lg text-gray-800 dark:[&>strong]:text-sky-400 [&>strong]:text-sky-400 [&>strong]:font-semibold dark:text-gray-300"
+      class="hero-in mt-3 text-lg font-semibold text-gray-600 md:text-2xl dark:text-gray-300"
+      style="--d: 220ms"
     >
-    Soy un <strong>Full Stack Developer</strong> en Barcelona, España, apasionado por el desarrollo web y la creación de interfaces que no solo sean atractivas, sino también funcionales. Me motiva <strong>dar vida a las ideas de forma visual</strong> y crear experiencias que conecten con los usuarios. Aunque mi <strong>enfoque</strong> está en el <strong>diseño frontend,</strong> también tengo <strong>conocimientos</strong> en la <strong>lógica</strong> detrás de las aplicaciones.
-    <nav class="flex flex-col md:flex-row flex-wrap gap-4 mt-10 md:mt-16 justify-center items-center">
+      Desarrollador Full Stack en Barcelona
+    </p>
+    <p
+      class="hero-in mx-auto mt-6 max-w-xl text-pretty text-base text-gray-700 md:mx-0 md:text-lg dark:text-gray-300"
+      style="--d: 320ms"
+    >
+      Me motiva dar vida a las ideas de forma visual. Desarrollo aplicaciones web de
+      principio a fin, con especial cuidado en interfaces claras, rápidas y que
+      funcionan en cualquier dispositivo. Busco un equipo donde seguir creciendo como
+      desarrollador.
+    </p>
+    <nav
+      class="hero-in mt-8 flex flex-wrap justify-center gap-3 md:justify-start"
+      style="--d: 420ms"
+      aria-label="Contacto"
+    >
+      <SocialPill primary href="/cv.pdf" download>
+        <DescargaIcon class="size-4" />
+        Descargar CV
+      </SocialPill>
       <SocialPill href="mailto:davidgm9999@gmail.com">
         <MailIcon class="size-4" />
-        Contáctame
+        Email
       </SocialPill>
-      <SocialPill href="https://www.linkedin.com/in/david-garcia-marmol-96854229b/">
+      <SocialPill
+        href="https://www.linkedin.com/in/david-garcia-marmol-96854229b/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <LinkedInIcon class="size-4" />
         LinkedIn
       </SocialPill>
-      <SocialPill href="./cv.pdf" download>
-        <DescargaIcon class="size-4" />
-        <button class="btn-download">
-          Curriculum
-        </button>
+      <SocialPill href="https://github.com/davidgm09" target="_blank" rel="noopener noreferrer">
+        <GitHubIcon class="size-4" />
+        GitHub
       </SocialPill>
     </nav>
   </div>
 </div>
 
+<style>
+  /* Única animación de entrada de la página: el hero aparece en cascada */
+  .hero-in {
+    animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--d);
+  }
 
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in {
+      animation: none;
+    }
+  }
+</style>

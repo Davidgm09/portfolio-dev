@@ -1,0 +1,20 @@
+---
+import type { Tag } from "../data/tags"
+
+interface Props {
+  tags: Tag[]
+}
+
+const { tags } = Astro.props
+---
+
+<ul class="flex flex-wrap gap-2" aria-label="Tecnologías">
+  {
+    tags.map((tag) => (
+      <li class="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+        <tag.icon class="size-3.5" />
+        {tag.name}
+      </li>
+    ))
+  }
+</ul>

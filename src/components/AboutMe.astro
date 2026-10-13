@@ -1,62 +1,96 @@
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row mt-14">
-  
-  <!-- Texto -->
-  <div class="flex-1  h-96 overflow-y-auto [&>p]:mb-4 [&>p>strong]:text-sky-400 dark:[&>p>strong]:text-sky-400 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
+---
+import { Image } from "astro:assets"
+import me from "../assets/about/me.webp"
+import me2 from "../assets/about/me2.jpeg"
+import me6 from "../assets/about/me6.png"
+
+const PHOTOS = [
+  { src: me, alt: "David García", position: "center top" },
+  { src: me2, alt: "David García", position: "center" },
+  { src: me6, alt: "David García", position: "center top" },
+]
+---
+
+<article class="mt-12 flex flex-col items-center gap-10 text-gray-700 md:flex-row md:items-start dark:text-gray-300">
+
+  <div class="order-2 flex-1 space-y-4 text-pretty md:order-1 [&_strong]:font-semibold [&_strong]:text-gray-900 dark:[&_strong]:text-white">
     <p>
-      Soy David, desarrollador web con formación en<strong> Desarrollo de Aplicaciones Web y Administración de Sistemas Informáticos y Redes.</strong> 
-    </p>  
-    <p>
-      Actualmente formo parte del equipo de <strong>Soccer Systems Pro</strong>, contribuyendo al desarrollo de soluciones tecnológicas para el sector deportivo.
+      Soy técnico superior en <strong>Desarrollo de Aplicaciones Web</strong> y en <strong>Administración de Sistemas Informáticos en Red</strong>, así que me muevo bien tanto en el código como en la infraestructura que lo sostiene.
     </p>
     <p>
-      Previamente, trabajé como Entrenador Docente en el <strong>Instituto Tecnológico Master.D</strong> en Barcelona, donde impartí talleres, realicé seguimientos personalizados y supervisé prácticas en áreas de Informática y Videojuegos, fortaleciendo mis habilidades profesionales y personales.
+      Mi último puesto fue en <strong>BAU, Centre Universitari d'Arts i Disseny</strong>, donde gestionaba los usuarios en Microsoft Azure, administraba Moodle y el campus virtual, y desarrollé desde cero sus webs El Cub y BAU News y la aplicación interna de gestión académica con Next.js y React.
     </p>
     <p>
-      Me especializo en el uso de tecnologías modernas como<strong> Astro, React, Tailwind CSS, PHP y MySQL,</strong> y siempre estoy en constante aprendizaje para seguir creciendo como desarrollador.
+      Antes fui desarrollador Full Stack en <strong>Soccer System Pro</strong>, donde adaptaba su software de gestión deportiva a lo que necesitaba cada club, y formador de Informática y Videojuegos en el <strong>Instituto Tecnológico Master.D</strong>, donde impartía talleres y acompañaba a los alumnos en sus prácticas.
     </p>
     <p>
-      Además, estoy abierto a colaborar en <strong>proyectos freelance</strong> que representen nuevos retos y oportunidades de innovación.
-    </p>
-    <p>
-      ¡Gracias por visitar mi portafolio! Si quieres trabajar conmigo, no dudes en ponerte en contacto.
+      Busco un equipo en el que seguir creciendo como desarrollador, especialmente en el frontend.
     </p>
   </div>
 
-  <div id="gallery" class="relative h-96" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative max-h-full w-80 overflow-hidden rounded-lg h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out h-96" data-carousel-item="active">
-            <img src="/me.webp" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 mt-8" alt="">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/me2.jpeg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/me6.png" class="absolute block max-w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-96" alt="">
-        </div>
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
+  <div
+    data-carousel
+    class="group relative order-1 h-96 w-full max-w-80 shrink-0 overflow-hidden rounded-xl bg-[#eceef4] md:order-2 dark:bg-gray-900"
+    aria-roledescription="carrusel"
+    aria-label="Fotos de David"
+  >
+    {
+      PHOTOS.map((photo, i) => (
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          width={640}
+          data-slide
+          aria-hidden={i !== 0 ? "true" : "false"}
+          class={`absolute inset-0 size-full object-cover transition-opacity duration-700 motion-reduce:transition-none ${i === 0 ? "" : "opacity-0"}`}
+          style={`object-position: ${photo.position}`}
+        />
+      ))
+    }
+    <button type="button" data-prev class="carousel-btn left-3">
+      <svg class="size-4" aria-hidden="true" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" /></svg>
+      <span class="sr-only">Foto anterior</span>
     </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
+    <button type="button" data-next class="carousel-btn right-3">
+      <svg class="size-4" aria-hidden="true" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /></svg>
+      <span class="sr-only">Foto siguiente</span>
     </button>
   </div>
-
-
-
 </article>
+
+<style>
+  .carousel-btn {
+    @apply absolute top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-gray-900 backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-gray-900/70 dark:text-white dark:hover:bg-gray-900;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const slides = [...carousel.querySelectorAll<HTMLElement>("[data-slide]")]
+    let current = 0
+    let timer: number | undefined
+
+    const show = (index: number) => {
+      current = (index + slides.length) % slides.length
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("opacity-0", i !== current)
+        slide.setAttribute("aria-hidden", String(i !== current))
+      })
+    }
+
+    // Pasa sola cada 5 s, salvo si se prefiere menos movimiento o el cursor está encima
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const play = () => {
+      if (!reduceMotion) timer = window.setInterval(() => show(current + 1), 5000)
+    }
+    const pause = () => window.clearInterval(timer)
+
+    carousel.querySelector("[data-prev]")?.addEventListener("click", () => show(current - 1))
+    carousel.querySelector("[data-next]")?.addEventListener("click", () => show(current + 1))
+    carousel.addEventListener("mouseenter", pause)
+    carousel.addEventListener("mouseleave", play)
+    carousel.addEventListener("focusin", pause)
+    carousel.addEventListener("focusout", play)
+    play()
+  })
+</script>

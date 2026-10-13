@@ -1,0 +1,36 @@
+---
+import SocialPill from "./SocialPill.astro"
+import MailIcon from "./icons/Mail.astro"
+import LinkedInIcon from "./icons/LinkedIn.astro"
+import DescargaIcon from "./icons/Descarga.astro"
+---
+
+<div
+  class="rounded-2xl border border-gray-200 bg-[#eceef4] px-6 py-10 text-center md:px-12 md:py-14 dark:border-gray-800 dark:bg-gray-900"
+>
+  <h2 class="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl dark:text-white">
+    ¿Hablamos?
+  </h2>
+  <p class="mx-auto mt-3 max-w-lg text-pretty text-gray-700 dark:text-gray-300">
+    Estoy buscando mi siguiente puesto como desarrollador. Escríbeme o descarga mi CV y te
+    respondo lo antes posible.
+  </p>
+  <div class="mt-8 flex flex-wrap justify-center gap-3">
+    <SocialPill primary href="mailto:davidgm9999@gmail.com">
+      <MailIcon class="size-4" />
+      davidgm9999@gmail.com
+    </SocialPill>
+    <SocialPill href="/cv.pdf" download>
+      <DescargaIcon class="size-4" />
+      Descargar CV
+    </SocialPill>
+    <SocialPill
+      href="https://www.linkedin.com/in/david-garcia-marmol-96854229b/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+  </div>
+</div>
