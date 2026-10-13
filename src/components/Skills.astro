@@ -11,130 +11,98 @@ import Figma from "./icons/Figma.astro"
 import GitHub from "./icons/GitHub.astro"
 import AIcon from "./icons/AIcon.astro"
 import React from "./icons/React.astro"
-
+import NextJS from "./icons/NextJS.astro"
+import Azure from "./icons/Azure.astro"
+import Moodle from "./icons/Moodle.astro"
+import Supabase from "./icons/Supabase.astro"
+import CodeIcon from "./icons/Code.astro"
+import System from "./icons/System.astro"
+import World from "./icons/World.astro"
+import SkillsIcon from "./icons/SkillsIcon.astro"
 
 const TAGS = {
-    WORDPRESS: {
-        name: "Wordpress",
-        icon: Wordpress,
-    },
-
-    HTML: {
-        name: "HTML5",
-        icon: HTML,
-    },
-
-    CSS: {
-        name: "CSS3",
-        icon: CSS,
-    },
-
-    PHP: {
-        name: "PHP",
-        icon: PHP,
-        class: "h-20 w-20"
-    },
-
-    SQL: {
-        name: "MySQL",
-        icon: SQL,
-    },
-
-    SEO: {
-        name: "SEO",
-        icon: SEO,
-    },
-
-    TAILWIND: {
-        name: "Tailwind",
-        icon: Tailwind,
-    },
-
-    JS: {
-        name: "JavaScript",
-        icon: JS,
-    },
-
-    FIGMA: {
-        name: "Figma",
-        icon: Figma,
-    },
-    GITHUB: {
-        name: "GitHub",
-        icon: GitHub,
-    },
-    ASTRO: {
-        name: "Astro",
-        icon: AIcon,
-    },
-    REACT: {
-        name: "React",
-        icon: React,
-    },
+    WORDPRESS: { name: "Wordpress", icon: Wordpress },
+    HTML: { name: "HTML5", icon: HTML },
+    CSS: { name: "CSS3", icon: CSS },
+    PHP: { name: "PHP", icon: PHP },
+    SQL: { name: "MySQL", icon: SQL },
+    SEO: { name: "SEO", icon: SEO },
+    TAILWIND: { name: "Tailwind", icon: Tailwind },
+    JS: { name: "JavaScript", icon: JS },
+    FIGMA: { name: "Figma", icon: Figma },
+    GITHUB: { name: "GitHub", icon: GitHub },
+    ASTRO: { name: "Astro", icon: AIcon },
+    REACT: { name: "React", icon: React },
+    NEXT: { name: "Next.js", icon: NextJS },
+    AZURE: { name: "Azure", icon: Azure },
+    MOODLE: { name: "Moodle", icon: Moodle },
+    SUPABASE: { name: "Supabase", icon: Supabase },
 };
-const PROJECTS = [
-    {
-        tags: [TAGS.JS],
-    },
-    {
-        tags: [TAGS.REACT],
-    },
-    {
-        tags: [TAGS.ASTRO],
-    },
-    {
-        tags: [TAGS.TAILWIND],
-    },
-    {
-        tags: [TAGS.HTML],
-    },
-    {
-        tags: [TAGS.CSS],
-    },
-    {
-        tags: [TAGS.PHP],
-    },
-    {
-        tags: [TAGS.SQL],
-    },
-    {
-        tags: [TAGS.GITHUB],
-    },
-    {
-        tags: [TAGS.SEO],
-    },
-    {
-        tags: [TAGS.WORDPRESS],
-    },
-    {
-        tags: [TAGS.FIGMA],
-    },
-    
 
+const GROUPS = [
+    {
+        title: "Frontend",
+        subtitle: "Interfaces modernas, rápidas y responsive.",
+        icon: CodeIcon,
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.REACT, TAGS.NEXT, TAGS.ASTRO, TAGS.TAILWIND],
+    },
+    {
+        title: "Backend y bases de datos",
+        subtitle: "Lógica de servidor y gestión de datos.",
+        icon: System,
+        tags: [TAGS.PHP, TAGS.SQL, TAGS.SUPABASE],
+    },
+    {
+        title: "CMS y plataformas",
+        subtitle: "Contenidos, campus virtual y usuarios.",
+        icon: World,
+        tags: [TAGS.WORDPRESS, TAGS.MOODLE, TAGS.AZURE],
+    },
+    {
+        title: "Herramientas",
+        subtitle: "Versiones, diseño y posicionamiento.",
+        icon: SkillsIcon,
+        tags: [TAGS.GITHUB, TAGS.FIGMA, TAGS.SEO],
+    },
 ];
 ---
 
-<div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-[1rem] items-center mt-16"
->
+<div class="grid md:grid-cols-3 gap-4 mt-16">
 {
-PROJECTS.map(({tags}) => (
+GROUPS.map(({ title, subtitle, icon: GroupIcon, tags }, i) => {
+    const big = i === 0
+    // el último grupo va como franja horizontal a todo el ancho
+    const wide = i === GROUPS.length - 1
+    return (
     <div
-        data-aos="flip-left"
-        data-aos-anchor-placement="top-center"
-        class="aos-init aos-animate"
+        data-aos="fade-up"
+        data-aos-delay={i * 100}
+        class={`rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 ${big ? "md:col-span-2 md:row-span-2 md:p-7 flex flex-col" : ""} ${wide ? "md:col-span-3 md:flex md:items-center md:gap-8" : ""}`}
     >
-         {tags.map((tag) => (
-        <div
-            class="p-6 border-sky-800 duration-200 transition-all cursor-pointer text-center rounded-lg bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-700"
-        >
-            <tag.icon class="object-cover mx-auto w-20 h-20" />
-            <h1 class="text-[18px] mt-[1rem] text-gray-800 dark:text-white font-[600]">
-                {tag.name}
-            </h1>
+        <div class={`flex items-start gap-3 ${wide ? "mb-5 md:mb-0 md:w-72 md:shrink-0" : "mb-5"}`}>
+            <span class="grid place-items-center size-10 shrink-0 rounded-xl text-blue-700 bg-white dark:bg-gray-800 [&_svg]:size-5">
+                <GroupIcon />
+            </span>
+            <div class="flex-1">
+                <h3 class={`font-semibold text-gray-900 dark:text-white ${big ? "text-xl" : "text-base"}`}>{title}</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{subtitle}</p>
+            </div>
         </div>
+
+        <div class={`grid gap-3 ${big ? "grid-cols-3 sm:grid-cols-4 md:flex-1 md:auto-rows-fr" : "grid-cols-3"} ${wide ? "md:flex-1" : ""}`}>
+        {tags.map((tag, j) => (
+            <div
+                class={`flex flex-col items-center justify-center gap-2 rounded-xl bg-white dark:bg-gray-800/60 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 ${big ? "py-5" : "py-3"} ${big && tags.length % 4 === 3 && j === tags.length - 1 ? "sm:col-span-2" : ""}`}
+            >
+                <tag.icon class={`${big ? "size-12 md:size-14" : "size-8"}`} />
+                <span class={`font-medium text-gray-700 dark:text-gray-300 ${big ? "text-sm" : "text-[11px]"}`}>
+                    {tag.name}
+                </span>
+            </div>
         ))}
+        </div>
     </div>
-       ))
+    )
+})
 }
 </div>

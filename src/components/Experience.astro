@@ -5,6 +5,11 @@ import CSS from "./icons/CSS.astro"
 import PHP from "./icons/PHP.astro"
 import SQL from "./icons/SQL.astro"
 import JS from "./icons/JS.astro"
+import NextJS from "./icons/NextJS.astro"
+import ReactIcon from "./icons/React.astro"
+import Tailwind from "./icons/TailwindCSS.astro"
+import Azure from "./icons/Azure.astro"
+import Moodle from "./icons/Moodle.astro"
 
 const TAGS = {
     HTML: {
@@ -27,22 +32,56 @@ const TAGS = {
 
   SQL: {
     name: "MySQL",
-    class: "bg-gray-300 dark:bg-white dark:text-black",
+    class: "bg-blue-100 text-blue-900",
     icon: SQL,
   },
   JS: {
     name: "JavaScript",
-    class: "bg-white text-black",
+    class: "bg-yellow-200 text-black",
     icon: JS,
+  },
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#003159] text-white",
+    icon: ReactIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-cyan-100 text-cyan-900",
+    icon: Tailwind,
+  },
+  AZURE: {
+    name: "Azure",
+    class: "bg-indigo-100 text-indigo-900",
+    icon: Azure,
+  },
+  MOODLE: {
+    name: "Moodle",
+    class: "bg-orange-100 text-orange-900",
+    icon: Moodle,
   },
 }
 const EXPERIENCE = [
   {
-    date: "Actualmente",
-    title: "Full Stack Depelover",
+    date: "Julio 2026",
+    title: "Responsable de Informática de Gestión y Sistemas de Información",
+    company: "BAU, Centre Universitari d'Arts i Disseny",
+    description:
+      "Encargado de la gestión de usuarios con Microsoft Azure, la administración de la plataforma Moodle, la gestión del campus virtual de la universidad y el mantenimiento de sus webs. Además, desarrollé la aplicación interna de gestión académica: notas de alumnos, profesorado, asignación docente y más.",
+    tags: [TAGS.NEXT, TAGS.REACT, TAGS.TAILWIND, TAGS.AZURE, TAGS.MOODLE],
+    link: "https://www.linkedin.com/school/bau-centre-universitari-darts-i-disseny/",
+  },
+  {
+    date: "Octubre 2025",
+    title: "Full Stack Developer",
     company: "Soccer System Pro",
     description:
-      "Desarollador web Full Stack en Soccer System Pro, trabajando en la creación y optimización de aplicaciones web.",
+      "Desarrollador web Full Stack en Soccer System Pro, trabajando en la creación y optimización de aplicaciones web.",
       tags: [TAGS.HTML, TAGS.CSS, TAGS.PHP,TAGS.SQL,TAGS.JS],
     link: "https://www.linkedin.com/company/soccersystempro/",
 

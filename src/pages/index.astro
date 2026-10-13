@@ -11,7 +11,6 @@ import SectionContainer from "../components/SectionContainer.astro"
 import Hero from "../components/Hero.astro"
 import TitleSection from "../components/TitleSection.astro"
 import SkillsIcon from "../components/icons/SkillsIcon.astro"
-import Services from "../components/Services.astro"
 import 'aos/dist/aos.css';
 ---
 <script>
@@ -43,20 +42,6 @@ import 'aos/dist/aos.css';
 
     <div class="space-y-24">
 
-      <SectionContainer id="servicios">
-        <div class="flex justify-center">
-          <TitleSection className="text-center">
-            <CodeIcon class="size-10 text-blue-700"/>
-            ¿Qué puedo hacer por ti?
-          </TitleSection>
-        </div>
-        <p class="text-gray-600 dark:text-gray-400 text-center mb-8 max-w-2xl mx-auto">
-          Transformo ideas en proyectos web modernos, optimizados y pensados para impulsar tu presencia digital.
-        </p>
-      <Services />
-    </SectionContainer>
-
-    
       <SectionContainer id="experiencia">
         <TitleSection>
           <Briefcase class="size-8 text-blue-700"/>
