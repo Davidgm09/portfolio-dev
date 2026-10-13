@@ -1,0 +1,140 @@
+---
+import Wordpress from "./icons/Wordpress.astro"
+import HTML from "./icons/HTML.astro"
+import CSS from "./icons/CSS.astro"
+import PHP from "./icons/PHP.astro"
+import SQL from "./icons/SQL.astro"
+import SEO from "./icons/SEO.astro"
+import Tailwind from "./icons/TailwindCSS.astro"
+import JS from "./icons/JS.astro"
+import Figma from "./icons/Figma.astro"
+import GitHub from "./icons/GitHub.astro"
+import AIcon from "./icons/AIcon.astro"
+import React from "./icons/React.astro"
+
+
+const TAGS = {
+    WORDPRESS: {
+        name: "Wordpress",
+        icon: Wordpress,
+    },
+
+    HTML: {
+        name: "HTML5",
+        icon: HTML,
+    },
+
+    CSS: {
+        name: "CSS3",
+        icon: CSS,
+    },
+
+    PHP: {
+        name: "PHP",
+        icon: PHP,
+        class: "h-20 w-20"
+    },
+
+    SQL: {
+        name: "MySQL",
+        icon: SQL,
+    },
+
+    SEO: {
+        name: "SEO",
+        icon: SEO,
+    },
+
+    TAILWIND: {
+        name: "Tailwind",
+        icon: Tailwind,
+    },
+
+    JS: {
+        name: "JavaScript",
+        icon: JS,
+    },
+
+    FIGMA: {
+        name: "Figma",
+        icon: Figma,
+    },
+    GITHUB: {
+        name: "GitHub",
+        icon: GitHub,
+    },
+    ASTRO: {
+        name: "Astro",
+        icon: AIcon,
+    },
+    REACT: {
+        name: "React",
+        icon: React,
+    },
+};
+const PROJECTS = [
+    {
+        tags: [TAGS.JS],
+    },
+    {
+        tags: [TAGS.REACT],
+    },
+    {
+        tags: [TAGS.ASTRO],
+    },
+    {
+        tags: [TAGS.TAILWIND],
+    },
+    {
+        tags: [TAGS.HTML],
+    },
+    {
+        tags: [TAGS.CSS],
+    },
+    {
+        tags: [TAGS.PHP],
+    },
+    {
+        tags: [TAGS.SQL],
+    },
+    {
+        tags: [TAGS.GITHUB],
+    },
+    {
+        tags: [TAGS.SEO],
+    },
+    {
+        tags: [TAGS.WORDPRESS],
+    },
+    {
+        tags: [TAGS.FIGMA],
+    },
+    
+
+];
+---
+
+<div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-[1rem] items-center mt-16"
+>
+{
+PROJECTS.map(({tags}) => (
+    <div
+        data-aos="flip-left"
+        data-aos-anchor-placement="top-center"
+        class="aos-init aos-animate"
+    >
+         {tags.map((tag) => (
+        <div
+            class="p-6 border-sky-800 duration-200 transition-all cursor-pointer text-center rounded-lg bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-700"
+        >
+            <tag.icon class="object-cover mx-auto w-20 h-20" />
+            <h1 class="text-[18px] mt-[1rem] text-gray-800 dark:text-white font-[600]">
+                {tag.name}
+            </h1>
+        </div>
+        ))}
+    </div>
+       ))
+}
+</div>

@@ -1,0 +1,83 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+import HTML from "./icons/HTML.astro"
+import CSS from "./icons/CSS.astro"
+import PHP from "./icons/PHP.astro"
+import SQL from "./icons/SQL.astro"
+import JS from "./icons/JS.astro"
+
+const TAGS = {
+    HTML: {
+    name: "HTML5",
+    class: "bg-orange-400 text-black",
+    icon: HTML,
+  },
+
+  CSS: {
+    name: "CSS3",
+    class: "bg-sky-300 text-black",
+    icon: CSS,
+  },
+
+  PHP: {
+    name: "PHP",
+    class: "bg-black text-white",
+    icon: PHP,
+  },
+
+  SQL: {
+    name: "MySQL",
+    class: "bg-gray-300 dark:bg-white dark:text-black",
+    icon: SQL,
+  },
+  JS: {
+    name: "JavaScript",
+    class: "bg-white text-black",
+    icon: JS,
+  },
+}
+const EXPERIENCE = [
+  {
+    date: "Actualmente",
+    title: "Full Stack Depelover",
+    company: "Soccer System Pro",
+    description:
+      "Desarollador web Full Stack en Soccer System Pro, trabajando en la creación y optimización de aplicaciones web.",
+      tags: [TAGS.HTML, TAGS.CSS, TAGS.PHP,TAGS.SQL,TAGS.JS],
+    link: "https://www.linkedin.com/company/soccersystempro/",
+
+  },
+  {
+    date: "Febrero 2024",
+    title: "Entrenador Docente de Informática y Comunicaciones",
+    company: "MasterD",
+    description:
+      "Entrenador docente en el centro de formación ITMD (Instituto Tecnológico Master.D) de Barcelona, formando y capacitando a los alumnos en las áreas de Informática y Comunicaciones como en las áreas de Videojuegos.",
+    link: "https://www.linkedin.com/school/master-d/",
+  },
+  {
+    date: "Septiembre 2021",
+    title: "Prácticas de Empresa",
+    company: "MasterD",
+    description:
+      "Prácticas de empresa en Master D, encargado de ayudar a los alumnos de informática mientras desarrollaba manuales.",
+  },
+  {
+    date: "Junio 2020",
+    title: "Prácticas de Empresa",
+    company: "Everis",
+    description:
+      "Participé en diferentes proyectos donde adquirí conocimientos técnicos, también de organización y gestión en equipo.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

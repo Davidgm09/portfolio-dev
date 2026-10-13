@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro"
+import AboutMe from "../components/AboutMe.astro"
+import Briefcase from "../components/icons/Briefcase.astro"
+import CodeIcon from "../components/icons/Code.astro"
+import Experience from "../components/Experience.astro"
+import ProfileCheck from "../components/icons/ProfileCheck.astro"
+import Projects from "../components/Projects.astro"
+import Skills from "../components/Skills.astro"
+import SectionContainer from "../components/SectionContainer.astro"
+import Hero from "../components/Hero.astro"
+import TitleSection from "../components/TitleSection.astro"
+import SkillsIcon from "../components/icons/SkillsIcon.astro"
+import Services from "../components/Services.astro"
+import 'aos/dist/aos.css';
+---
+<script>
+  import AOS from 'aos';
+
+  if (typeof window !== "undefined") {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+    });
+  }
+</script>
+
+<Layout
+  title="Porfolio de David - Desarrollador y Programador Web"
+  description="Contrátame  para crear tu aplicación web o móvil. Desarrollador Web Full Stack"
+>
+
+  
+  <main class="px-4">
+
+    <SectionContainer class="py-10 md:py-28">
+      <Hero>
+      </slot>
+    </Hero>
+    </SectionContainer>
+
+    <div class="space-y-24">
+
+      <SectionContainer id="servicios">
+        <div class="flex justify-center">
+          <TitleSection className="text-center">
+            <CodeIcon class="size-10 text-blue-700"/>
+            ¿Qué puedo hacer por ti?
+          </TitleSection>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+          Transformo ideas en proyectos web modernos, optimizados y pensados para impulsar tu presencia digital.
+        </p>
+      <Services />
+    </SectionContainer>
+
+    
+      <SectionContainer id="experiencia">
+        <TitleSection>
+          <Briefcase class="size-8 text-blue-700"/>
+          Experiencia laboral
+        </TitleSection>
+        <Experience />
+      </SectionContainer>
+    
+    
+
+    <SectionContainer id="proyectos" data-aos="fade-up" data-aos-delay="100">
+      <TitleSection data-aos="fade-up" data-aos-delay="200">
+        <CodeIcon class="size-7 text-blue-700"/>
+        Proyectos
+      </TitleSection>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="skills" data-aos="fade-up" data-aos-delay="100">
+      <TitleSection data-aos="fade-up" data-aos-delay="200">
+        <SkillsIcon class="size-8 text-blue-700"/>
+        Skills
+      </TitleSection>
+      <Skills />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <TitleSection>
+        <ProfileCheck class="size-8 text-blue-700"/>
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
+    </SectionContainer>
+
+    </div>
+  </main>
+  
+  
+</Layout>

@@ -1,0 +1,165 @@
+---
+import GitHub from "./icons/GitHub.astro"
+import Wordpress from "./icons/Wordpress.astro"
+import HTML from "./icons/HTML.astro"
+import CSS from "./icons/CSS.astro"
+import PHP from "./icons/PHP.astro"
+import SQL from "./icons/SQL.astro"
+import SEO from "./icons/SEO.astro"
+import Tailwind from "./icons/TailwindCSS.astro"
+import Aicon from "./icons/AIcon.astro"
+import JS from "./icons/JS.astro"
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+import Video from "./icons/Video.astro"
+
+const TAGS = {
+  WORDPRESS: {
+    name: "Wordpress",
+    class: "bg-gray-300 dark:bg-white text-black",
+    icon: Wordpress,
+  },
+
+  HTML: {
+    name: "HTML5",
+    class: "bg-orange-400 text-black",
+    icon: HTML,
+  },
+
+  CSS: {
+    name: "CSS3",
+    class: "bg-sky-300 text-black",
+    icon: CSS,
+  },
+
+  PHP: {
+    name: "PHP",
+    class: "bg-black text-white",
+    icon: PHP,
+  },
+
+  SQL: {
+    name: "MySQL",
+    class: "bg-gray-300 dark:bg-white dark:text-black",
+    icon: SQL,
+  },
+
+  SEO: {
+    name: "SEO",
+    class: "bg-black text-white",
+    icon: SEO,
+  },
+
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-gray-300 dark:bg-white dark:text-black",
+    icon: Tailwind,
+  },
+  AICON: {
+    name: "Astro",
+    class: "bg-black text-white",
+    icon: Aicon,
+  },
+
+  JS: {
+    name: "JavaScript",
+    class: "bg-white text-black",
+    icon: JS,
+  },
+}
+const PROJECTS = [
+  {
+    title: "Galería de dibujos",
+    description:
+      "Proyecto realizado para aprender sobre Astro y TailwindCSS, en el que muestro mis propios dibujos.",
+    link: "https://galeriadgm.es/",
+    image: "/projects/gallery.webp",
+    tags: [TAGS.TAILWIND, TAGS.CSS, TAGS.AICON],
+  },  
+  {
+    title: "Tesla Landing Page - Réplica",
+    description:
+      "Réplica de la Landing Page de Tesla, desarrollada con Astro y Tailwind CSS para lograr una estructura optimizada y un diseño moderno.",
+    link: "https://davidgm09.github.io/Tesla-Replica/",
+    image: "/projects/tesla.webp",
+    tags: [TAGS.TAILWIND, TAGS.CSS, TAGS.AICON],
+  },
+  {
+    title: "Scroll Moto Animation Experience",
+    description:
+      "Un proyecto interactivo que combina animaciones fluidas y una experiencia visual dinámica al hacer scroll. Inspirado en el diseño minimalista japonés de Ichiban Bike.",
+    link: "https://davidgm09.github.io/scroll-moto/",
+    image: "/projects/moto.webp",
+    tags: [TAGS.JS, TAGS.CSS, TAGS.HTML],
+  },
+  {
+    title: "eSound - Página informátiva sobre la aplicación",
+    description:
+      "Proyecto realizado para informar sobre la aplicación eSound y aprender sobre posicionamiento con SEO.",
+    link: "https://es0undd.es/",
+    image: "/projects/esound.webp",
+    tags: [TAGS.WORDPRESS, TAGS.CSS, TAGS.SEO],
+  },
+  {
+    title: "NormaComics - Tienda de comics y figuras",
+    description:
+      "Réplica de NormaComics para la realización de talleres de programación en Master.D y el aprendizaje de los alumnos de Informática.",
+    video: "/video.mp4",
+    image: "/projects/norma.webp",
+    tags: [TAGS.SQL, TAGS.CSS, TAGS.PHP, TAGS.HTML],
+  },
+]
+---
+
+<div class="flex flex-col gap-y-16 mt-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, video}) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="imagen del proyecto" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Previsualizar
+            </LinkButton>
+          )}
+          {video && (
+            <LinkButton href={video}>
+              <Video class="size-4" />
+              Video
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+
+
