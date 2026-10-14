@@ -5,6 +5,7 @@ import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
 import "../styles/global.css"
 import "aos/dist/aos.css"
+import Analytics from "@vercel/analytics/astro"
 
 interface Props {
   title: string
@@ -63,6 +64,8 @@ const ogImage = Astro.site ? new URL("/og.png", Astro.site).href : undefined
     <Header />
     <slot />
     <Footer />
+    <!-- Estadísticas de visitas de Vercel (sin cookies) -->
+    <Analytics />
     <style is:global>
       :root {
         color-scheme: light;
