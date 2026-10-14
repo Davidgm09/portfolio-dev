@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = [
     title: "Galería de dibujos",
     description:
       "Galería con mis propios dibujos, el proyecto con el que aprendí Astro y Tailwind CSS.",
-    link: "https://galeriadgm.es/",
+    link: "https://galeriadgm.vercel.app/",
     image: gallery,
     tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.CSS],
   },
