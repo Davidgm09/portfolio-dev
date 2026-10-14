@@ -2,7 +2,6 @@ import type { ImageMetadata } from "astro"
 import { TAGS, type Tag } from "./tags"
 import elcub from "../assets/projects/elcub.webp"
 import baunews from "../assets/projects/baunews.webp"
-import soccersystempro from "../assets/projects/soccersystempro.webp"
 import norma from "../assets/projects/norma.webp"
 import moto from "../assets/projects/moto.webp"
 import tesla from "../assets/projects/tesla.webp"
@@ -35,14 +34,6 @@ export const PROJECTS: Project[] = [
     link: "https://news.baued.es/",
     image: baunews,
     tags: [TAGS.WORDPRESS, TAGS.PHP, TAGS.SEO, TAGS.CSS],
-  },
-  {
-    title: "Soccer System Pro",
-    description:
-      "Software de gestión deportiva que usan clubes y federaciones de fútbol. Mi trabajo principal era el propio software: desarrollaba las funcionalidades que pedía cada club, como dietas y nutrición, datos de jugadores o seguimiento de lesiones. También resolví tickets en su web corporativa.",
-    link: "https://soccersystempro.com/",
-    image: soccersystempro,
-    tags: [TAGS.PHP, TAGS.SQL, TAGS.JS, TAGS.WORDPRESS],
   },
   {
     title: "NormaComics",
