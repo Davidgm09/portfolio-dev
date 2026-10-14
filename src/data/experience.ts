@@ -11,7 +11,7 @@ export interface Job {
 
 export const EXPERIENCE: Job[] = [
   {
-    date: "Julio 2026",
+    date: "Octubre 2025 – septiembre 2026",
     title: "Responsable de Informática de Gestión y Sistemas de Información",
     company: "BAU, Centre Universitari d'Arts i Disseny",
     description:
@@ -20,35 +20,26 @@ export const EXPERIENCE: Job[] = [
     link: "https://www.linkedin.com/school/bau-centre-universitari-darts-i-disseny/",
   },
   {
-    date: "Octubre 2025",
+    date: "Abril 2025 – octubre 2025",
     title: "Full Stack Developer",
     company: "Soccer System Pro",
     description:
       "Desarrollaba las funcionalidades y cambios que pedía cada club en el software de gestión deportiva de la empresa, trabajando en toda la plataforma: planes de dieta y nutrición, datos y fichas de los jugadores, seguimiento de lesiones y otras áreas.",
-      tags: [TAGS.HTML, TAGS.CSS, TAGS.PHP,TAGS.SQL,TAGS.JS],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.PHP, TAGS.SQL, TAGS.JS],
     link: "https://www.linkedin.com/company/soccersystempro/",
-
   },
   {
-    date: "Febrero 2024",
+    date: "2021 – 2024",
     title: "Entrenador Docente de Informática y Comunicaciones",
-    company: "MasterD",
+    company: "Instituto Tecnológico Master.D",
     description:
-      "Entrenador docente en el centro de formación ITMD (Instituto Tecnológico Master.D) de Barcelona, formando y capacitando a los alumnos en las áreas de Informática y Comunicaciones como en las áreas de Videojuegos.",
+      "Formación de alumnos en Informática y Comunicaciones y en Videojuegos: talleres, seguimiento personalizado y supervisión de prácticas.",
     link: "https://www.linkedin.com/school/master-d/",
   },
   {
-    date: "Septiembre 2021",
-    title: "Prácticas de Empresa",
-    company: "MasterD",
-    description:
-      "Prácticas de empresa en Master D, encargado de ayudar a los alumnos de informática mientras desarrollaba manuales.",
-  },
-  {
-    date: "Junio 2020",
-    title: "Prácticas de Empresa",
-    company: "Everis",
-    description:
-      "Participé en diferentes proyectos donde adquirí conocimientos técnicos, también de organización y gestión en equipo.",
+    date: "Marzo 2021 – julio 2021",
+    title: "Prácticas",
+    company: "Instituto Tecnológico Master.D",
+    description: "Apoyo a los alumnos de informática y elaboración de manuales.",
   },
 ]
